@@ -2,6 +2,14 @@
 
 This is plugin adds easter eggs on Your server!
 
+About this plugin:
+This plugin adds easter eggs on Your server. All messages in plugin can configure. The plugin in beta testing and all found bugs will fixed. 
+
+Features: 
+- Very comfortable configuration/language configuration.
+- Full management aobve the easter egg.
+- Many useful commands.
+
 Commands and Permissions:
 - /eastereggs reload - Reload plugin. [eastereggs.reload]
 - /eastereggs create [Name] [Prize] - Create an easter egg. [eastereggs.create]

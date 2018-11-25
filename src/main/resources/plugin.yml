@@ -1,0 +1,12 @@
+#
+# Copyright © Nikita (DeethzzCoder) Knyazev [vk.com/deethzzcoder/]
+#
+
+name: DeethEasterEggs
+version: 0.1
+main: com.deethzzcoder.deetheastereggs.DeethEasterEggsPlugin
+api-version: 1.12
+
+commands:
+  eastereggs:
+    aliases: [easteregg]

@@ -1,0 +1,87 @@
+#
+# Copyright © Nikita (DeethzzCoder) Knyazev [vk.com/deethzzcoder/]
+#
+
+#
+# SORRY FOR MY ENGLISH!!!
+#
+
+messages:
+  only-for-players: "&cThis command only for players!"
+  no-permission: "&cYou don't have permission!"
+  subcommand-doesnt-exist: "&cThis subcommand doesn't exist!"
+  none: '&cNone'
+
+  help:
+  - '&e[DeethEasterEggs] &6&l| &7Easter eggs:'
+  - '&e/eastereggs reload &7- Reload plugin.'
+  - '&e/eastereggs create [Name] [Prize] &7- Create an easter egg.'
+  - '&e/eastereggs remove [Name] &7- Remove an easter egg.'
+  - '&e/eastereggs relocation [Name] &7- Relocation the easter egg.'
+  - '&e/eastereggs reprize [Name] [New prize] &7- Reprize the easter egg.'
+  - '&e/eastereggs info [Name] &7- Info about easter egg.'
+  - '&e/eastereggs player-info [Name] &7- Info about easter user.'
+
+  # Placeholders:
+  # %easter-egg-name% - name of the easter egg
+  # %easter-egg-prize% - prize of the easter egg
+  # %easter-egg-world% - world of the easter egg
+  # %easter-egg-x% - x of the easter egg
+  # %easter-egg-y% - y of the easter egg
+  # %easter-egg-z% - z of the easter egg
+  # %easter-egg-old-name% - old name of the easter egg
+  # %easter-egg-old-prize% - old prize of the easter egg
+  # %easter-egg-old-world% - old world of the easter egg
+  # %easter-egg-old-x% - old x of the easter egg
+  # %easter-egg-old-y% - old y of the easter egg
+  # %easter-egg-old-z% - old z of the easter egg
+  # %easter-user-name% - name of the easter user
+  # %easter-user-uuid% - uuid of the easter user
+  # %easter-user-eggs% - found easter eggs of the easter user
+
+  # Placeholder: %name% - player name.
+  found-easteregg:
+    title: '&e&lThe easter egg found!'
+    subtitle: ''
+    message: '&eGood! You found an easter egg!'
+
+  reload-subcommand:
+    usage: '&e[DeethEasterEggs] &6&l| &eUsage: &c/eastereggs reload'
+    successfully: '&e[DeethEasterEggs] &6&l| &aThe plugin was successfully reloaded!'
+  create-subcommand:
+    usage: '&e[DeethEasterEggs] &6&l| &eUsage: &c/eastereggs create [Name] [Prize]'
+    already-exists-name: '&e[DeethEasterEggs] &6&l| &cAn easter egg with name %easter-egg-name% already exists!'
+    already-exists-location: '&e[DeethEasterEggs] &6&l| &cAn easter egg with location (%easter-egg-world% %easter-egg-x% %easter-egg-y% %easter-egg-z% already exists!'
+    successfully: '&e[DeethEasterEggs] &6&l| &aThe easter egg successfully created!'
+  remove-subcommand:
+    usage: '&e[DeethEasterEggs] &6&l| &eUsage: &c/eastereggs remove [Name]'
+    doesnt-exist: "&e[DeethEasterEggs] &6&l| &cAn easter egg with name %easter-egg-name% doesn't exist!"
+    successfully: '&e[DeethEasterEggs] &6&l| &aThe easter egg successfully removed!'
+  rename-subcommand:
+    usage: '&e[DeethEasterEggs] &6&l| &eUsage: &c/eastereggs rename [Old name] [New name]'
+    doesnt-exist: "&e[DeethEasterEggs] &6&l| &cAn easter egg with name %easter-egg-name% doesn't exist!"
+    already-exists-name: '&e[DeethEasterEggs] &6&l| &cAn easter egg with name %easter-egg-name% already exists!'
+    successfully: '&e[DeethEasterEggs] &6&l| &aThe easter egg successfully renamed!'
+  relocation-subcommand:
+    usage: '&e[DeethEasterEggs] &6&l| &eUsage: &c/eastereggs relocation [Name]'
+    doesnt-exist: "&e[DeethEasterEggs] &6&l| &cAn easter egg with name %easter-egg-name% doesn't exist!"
+    already-exists-location: '&e[DeethEasterEggs] &6&l| &cAn easter egg with location %easter-egg-name% (%easter-egg-world% %easter-egg-x% %easter-egg-y% %easter-egg-z% already exists!'
+    successfully: '&e[DeethEasterEggs] &6&l| &aThe easter egg successfully relocated!'
+  reprize-subcommand:
+    usage: '&e[DeethEasterEggs] &6&l| &eUsage: &c/eastereggs reprize [Name] [New prize]'
+    doesnt-exist: "&e[DeethEasterEggs] &6&l| &cAn easter egg with name %easter-egg-name% doesn't exist!"
+    successfully: '&e[DeethEasterEggs] &6&l| &aThe easter egg successfully reprized!'
+  info-subcommand:
+    usage: '&e[DeethEasterEggs] &6&l| &eUsage: &c/eastereggs info [Name]'
+    doesnt-exist: "&e[DeethEasterEggs] &6&l| &cAn easter egg with name %easter-egg-name% doesn't exist!"
+    information:
+    - '&e[DeethEasterEggs] &6&l| &7Information about %easter-egg-name%:'
+    - '&ePrize: &c%easter-egg-prize%'
+    - '&eLocation: &c%easter-egg-world% %easter-egg-x% %easter-egg-y% %easter-egg-z%'
+  player-info-subcommand:
+    usage: '&e[DeethEasterEggs] &6&l| &eUsage: &c/eastereggs player-info [Name]'
+    doesnt-exist: "&e[DeethEasterEggs] &6&l| &cPlayer with name %easter-user-name% doesn't exist!"
+    information:
+    - '&e[DeethEasterEggs] &6&l| &7Information about %easter-user-name%:'
+    - '&eUUID: &c%easter-user-uuid%'
+    - '&eFound easter-eggs: &c%easter-user-eggs%'

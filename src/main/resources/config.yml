@@ -1,0 +1,21 @@
+#
+# Copyright © Nikita (DeethzzCoder) Knyazev [vk.com/deethzzcoder/]
+#
+
+#
+# SORRY FOR MY ENGLISH!!!
+#
+
+settings:
+  # If this option enabled, plugin will works.
+  enable: true
+
+  # If this option enabled, all important data will saved in storage
+  save: true
+
+  # Type of the storage. Available:
+  # YAML - yaml
+  storage: YAML
+
+  # If this option enabled, prize command will handling on server side.
+  handling-server-side: true

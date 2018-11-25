@@ -3,7 +3,7 @@
 This is plugin adds easter eggs on Your server!
 
 About this plugin:
-This plugin adds easter eggs on Your server. All messages in plugin can configure. The plugin in beta testing and all found bugs will fixed. 
+- This plugin adds easter eggs on Your server. All messages in plugin can configure. The plugin in beta testing and all found bugs will fixed. 
 
 Features: 
 - Very comfortable configuration/language configuration.

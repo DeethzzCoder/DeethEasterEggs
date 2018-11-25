@@ -10,3 +10,5 @@ Commands and Permissions:
 - /eastereggs reprize [Name] [New prize] - Reprize the easter egg. [eastereggs.reprize]
 - /eastereggs info [Name] - Info about easter egg. [eastereggs.info]
 - /eastereggs player-info [Name] - Info about easter user. [eastereggs.player-info]
+
+If you found bug, send it to 'issues'.

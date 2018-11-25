@@ -17,6 +17,7 @@ messages:
   - '&e/eastereggs reload &7- Reload plugin.'
   - '&e/eastereggs create [Name] [Prize] &7- Create an easter egg.'
   - '&e/eastereggs remove [Name] &7- Remove an easter egg.'
+  - '&e/eastereggs rename [Old name] [New name] &7- Rename the easter egg.'
   - '&e/eastereggs relocation [Name] &7- Relocation the easter egg.'
   - '&e/eastereggs reprize [Name] [New prize] &7- Reprize the easter egg.'
   - '&e/eastereggs info [Name] &7- Info about easter egg.'

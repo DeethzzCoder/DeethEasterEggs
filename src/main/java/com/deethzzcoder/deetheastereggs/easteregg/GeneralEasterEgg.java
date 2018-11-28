@@ -23,8 +23,7 @@ public final class GeneralEasterEgg {
     public GeneralEasterEgg(Plugin plugin, MainConfiguration mainConfiguration) throws IOException {
         if(!(plugin instanceof DeethEasterEggsPlugin)) throw new EasterEggException("This JavaPlugin type don't support!");
         TypeStorage typeStorage = mainConfiguration.getTypeStorage();
-        boolean save = mainConfiguration.getBoolean("save");
-        if(typeStorage == TypeStorage.YAML) this.easterEggRepository = new YamlEasterEggRepository(plugin.getDataFolder(), save);
+        if(typeStorage == TypeStorage.YAML) this.easterEggRepository = new YamlEasterEggRepository(plugin.getDataFolder(), mainConfiguration);
         this.easterEggStorage = easterEggRepository.load();
         this.easterEggFactory = new EasterEggFactoryImpl(easterEggStorage);
         this.easterEggPurifier = new EasterEggPurifierImpl(easterEggStorage);

@@ -51,6 +51,7 @@ messages:
     successfully: '&e[DeethEasterEggs] &6&l| &aThe plugin was successfully reloaded!'
   create-subcommand:
     usage: '&e[DeethEasterEggs] &6&l| &eUsage: &c/eastereggs create [Name] [Prize]'
+    blocked-name: '&e[DeethEasterEggs] &6&l| &cThis name for easter egg are blocked!'
     already-exists-name: '&e[DeethEasterEggs] &6&l| &cAn easter egg with name %easter-egg-name% already exists!'
     already-exists-location: '&e[DeethEasterEggs] &6&l| &cAn easter egg with location (%easter-egg-world% %easter-egg-x% %easter-egg-y% %easter-egg-z% already exists!'
     successfully: '&e[DeethEasterEggs] &6&l| &aThe easter egg successfully created!'
@@ -61,6 +62,7 @@ messages:
   rename-subcommand:
     usage: '&e[DeethEasterEggs] &6&l| &eUsage: &c/eastereggs rename [Old name] [New name]'
     doesnt-exist: "&e[DeethEasterEggs] &6&l| &cAn easter egg with name %easter-egg-name% doesn't exist!"
+    blocked-name: '&e[DeethEasterEggs] &6&l| &cThis name for easter egg are blocked!'
     already-exists-name: '&e[DeethEasterEggs] &6&l| &cAn easter egg with name %easter-egg-name% already exists!'
     successfully: '&e[DeethEasterEggs] &6&l| &aThe easter egg successfully renamed!'
   relocation-subcommand:
@@ -71,6 +73,7 @@ messages:
   reprize-subcommand:
     usage: '&e[DeethEasterEggs] &6&l| &eUsage: &c/eastereggs reprize [Name] [New prize]'
     doesnt-exist: "&e[DeethEasterEggs] &6&l| &cAn easter egg with name %easter-egg-name% doesn't exist!"
+    blocked-prize: '&e[DeethEasterEggs] &6&l| &cThis prize for easter egg are blocked!'
     successfully: '&e[DeethEasterEggs] &6&l| &aThe easter egg successfully reprized!'
   info-subcommand:
     usage: '&e[DeethEasterEggs] &6&l| &eUsage: &c/eastereggs info [Name]'

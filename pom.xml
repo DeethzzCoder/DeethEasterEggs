@@ -6,7 +6,7 @@
 
     <groupId>com.deethzzcoder</groupId>
     <artifactId>DeethEasterEggs</artifactId>
-    <version>0.1</version>
+    <version>0.5</version>
     <packaging>jar</packaging>
 
     <repositories>

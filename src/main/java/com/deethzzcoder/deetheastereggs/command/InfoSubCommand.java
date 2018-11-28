@@ -25,11 +25,11 @@ public class InfoSubCommand extends AbstractSubCommand {
     @Override
     protected void execute(CommandSender sender, String[] args) {
         if(easterEggResolver.findEasterEggByName(args[0]) == null) {
-            languageConfiguration.getBuilder("info-subcommand.doesnt-exist").replaceMessage("%easter-egg-name%", args[0]).build().send(sender);
+            languageConfiguration.getBuilder("info-subcommand.doesnt-exist").replaceEggData(args[0]).build().send(sender);
             return;
         }
         EasterEgg easterEgg = easterEggResolver.findEasterEggByName(args[0]);
-        languageConfiguration.getBuilder("info-subcommand.information").replaceMessage("%easter-egg-name%", easterEgg.getName()).replaceMessage("%easter-egg-prize%", easterEgg.hasPrize() ? easterEgg.getPrize() : languageConfiguration.getMessage("none").getMessage()).replaceMessage("%easter-egg-world%", easterEgg.getLocation().getWorld().getName()).replaceMessage("%easter-egg-x%", String.valueOf(easterEgg.getLocation().getX())).replaceMessage("%easter-egg-y%", String.valueOf(easterEgg.getLocation().getY())).replaceMessage("%easter-egg-z%", String.valueOf(easterEgg.getLocation().getZ())).build().send(sender);
+        languageConfiguration.getBuilder("info-subcommand.information").replaceEggData(easterEgg.getName(), easterEgg.hasPrize() ? easterEgg.getPrize() : languageConfiguration.getMessage("none").getMessage(), easterEgg.getLocation()).build().send(sender);
     }
 
 }

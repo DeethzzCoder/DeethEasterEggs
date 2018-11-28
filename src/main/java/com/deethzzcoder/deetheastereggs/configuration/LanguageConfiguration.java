@@ -45,16 +45,16 @@ public class LanguageConfiguration extends AbstractConfiguration {
         if(configuration.isConfigurationSection(pathSetting)) {
             loadSection(pathSetting);
         } else if(configuration.isString(pathSetting)) {
-            messages.put(pathSetting, new Message(new TextComponentBuilder(configuration.getString(pathSetting)).build()));
+            messages.put(pathSetting.replaceFirst("messages.", ""), new Message(new TextComponentBuilder(configuration.getString(pathSetting)).build()));
         } else if(configuration.isList(pathSetting)) {
-            messages.put(pathSetting, new Message(new TextComponentBuilder(StringUtils.mergeStrings(configuration.getStringList(pathSetting), "\n")).build()));
+            messages.put(pathSetting.replaceFirst("messages.", ""), new Message(new TextComponentBuilder(StringUtils.mergeStrings(configuration.getStringList(pathSetting), "\n")).build()));
         } else {
             throw new ConfigurationException("This message type don't support!");
         }
     }
 
     public Message getMessage(String path) {
-        return messages.get("messages." + path);
+        return messages.get(path);
     }
 
     public MessageBuilder getBuilder(String path) {

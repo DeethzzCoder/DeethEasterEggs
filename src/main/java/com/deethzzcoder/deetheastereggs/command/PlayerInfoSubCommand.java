@@ -30,13 +30,13 @@ public class PlayerInfoSubCommand extends AbstractSubCommand {
     @Override
     protected void execute(CommandSender sender, String[] args) {
         OfflinePlayer player = Bukkit.getOfflinePlayer(args[0]);
-        if(easterUserResolver.findEasterUserByUuid(player.getUniqueId()) == null) {
-            languageConfiguration.getBuilder("player-info-subcommand.doesnt-exist").replaceMessage("%easter-user-name%", args[0]).build().send(sender);
+        EasterUser easterUser = easterUserResolver.findEasterUserByUuid(player.getUniqueId());
+        if(easterUser == null) {
+            languageConfiguration.getBuilder("player-info-subcommand.doesnt-exist").replaceUserData(args[0]).build().send(sender);
             return;
         }
-        EasterUser easterUser = easterUserResolver.findEasterUserByUuid(player.getUniqueId());
-        List<String> foundEasterEggs =  easterUser.getEasterEggs().stream().map(easterEgg -> easterEgg.getName()).collect(Collectors.toList());
-        languageConfiguration.getBuilder("player-info-subcommand.information").replaceMessage("%easter-user-name%", args[0]).replaceMessage("%easter-user-uuid%", player.getUniqueId().toString()).replaceMessage("%easter-user-eggs%", foundEasterEggs.size() != 0 ? StringUtils.mergeStrings(foundEasterEggs, ", ") : languageConfiguration.getMessage("none").getMessage()).build().send(sender);
+        List<String> easterEggs =  easterUser.getEasterEggs().stream().map(easterEgg -> easterEgg.getName()).collect(Collectors.toList());
+        languageConfiguration.getBuilder("player-info-subcommand.information").replaceUserData(args[0], player.getUniqueId(), easterEggs.size() != 0 ? StringUtils.mergeStrings(easterEggs, ", ") : languageConfiguration.getMessage("none").getMessage()).build().send(sender);
     }
 
 }

@@ -1,6 +1,8 @@
 package com.deethzzcoder.deetheastereggs.command;
 
+import com.deethzzcoder.deetheastereggs.configuration.GeneralConfiguration;
 import com.deethzzcoder.deetheastereggs.configuration.LanguageConfiguration;
+import com.deethzzcoder.deetheastereggs.configuration.MainConfiguration;
 import com.deethzzcoder.deetheastereggs.easteregg.EasterEgg;
 import com.deethzzcoder.deetheastereggs.easteregg.EasterEggResolver;
 import com.deethzzcoder.deetheastereggs.utility.StringUtils;
@@ -16,23 +18,31 @@ import java.util.Arrays;
 public class ReprizeSubCommand extends AbstractSubCommand {
 
     private final LanguageConfiguration languageConfiguration;
+    private final MainConfiguration mainConfiguration;
     private final EasterEggResolver easterEggResolver;
 
-    ReprizeSubCommand(LanguageConfiguration languageConfiguration, EasterEggResolver easterEggResolver) {
+    ReprizeSubCommand(GeneralConfiguration generalConfiguration, EasterEggResolver easterEggResolver) {
         super("reprize", Arrays.asList("reprise"), true, 2, -1);
-        this.languageConfiguration = languageConfiguration;
+        this.languageConfiguration = generalConfiguration.getLanguageConfiguration();
+        this.mainConfiguration = generalConfiguration.getMainConfiguration();
         this.easterEggResolver = easterEggResolver;
     }
 
     @Override
     protected void execute(CommandSender sender, String[] args) {
-        if(easterEggResolver.findEasterEggByName(args[0]) == null) {
-            languageConfiguration.getBuilder("reprize-subcommand.doesnt-exist").replaceMessage("%easter-egg-name%", args[0]).build().send(sender);
+        EasterEgg easterEgg = easterEggResolver.findEasterEggByName(args[0]);
+        if(easterEgg == null) {
+            languageConfiguration.getBuilder("reprize-subcommand.doesnt-exist").replaceEggData(args[0]).build().send(sender);
             return;
         }
-        EasterEgg easterEgg = easterEggResolver.findEasterEggByName(args[0]);
-        easterEgg.setPrize(StringUtils.merge(ArrayUtils.remove(args, 0), " "));
-        languageConfiguration.getBuilder("reprize-subcommand.successfully").replaceMessage("%easter-egg-name%", easterEgg.getName()).replaceMessage("%easter-egg-prize%", easterEgg.hasPrize() ? easterEgg.getPrize() : languageConfiguration.getMessage("none").getMessage()).replaceMessage("%easter-egg-world%", easterEgg.getLocation().getWorld().getName()).replaceMessage("%easter-egg-x%", String.valueOf(easterEgg.getLocation().getX())).replaceMessage("%easter-egg-y%", String.valueOf(easterEgg.getLocation().getY())).replaceMessage("%easter-egg-z%", String.valueOf(easterEgg.getLocation().getZ())).build().send(sender);
+        String prize = StringUtils.merge(ArrayUtils.remove(args, 0), " ");
+        if(mainConfiguration.getStringList("blocked-egg-prizes").contains(prize)) {
+            languageConfiguration.getBuilder("reprize-subcommand.blocked-prize").replaceEggData(prize).build().send(sender);
+            return;
+        }
+        String oldPrize = easterEgg.getPrize();
+        easterEgg.setPrize(prize);
+        languageConfiguration.getBuilder("reprize-subcommand.successfully").replaceEggData(easterEgg.getName(), easterEgg.getPrize(), easterEgg.getLocation()).replaceMessage("%easter-egg-old-prize%", oldPrize).build().send(sender);
     }
 
 }

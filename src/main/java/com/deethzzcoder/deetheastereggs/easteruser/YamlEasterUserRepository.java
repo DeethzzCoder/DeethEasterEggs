@@ -1,5 +1,6 @@
 package com.deethzzcoder.deetheastereggs.easteruser;
 
+import com.deethzzcoder.deetheastereggs.configuration.MainConfiguration;
 import com.deethzzcoder.deetheastereggs.easteregg.EasterEgg;
 import com.deethzzcoder.deetheastereggs.easteregg.EasterEggResolver;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -15,14 +16,14 @@ import java.util.*;
 
 public class YamlEasterUserRepository implements EasterUserRepository {
 
-    private final boolean save;
+    private final MainConfiguration mainConfiguration;
     private EasterEggResolver easterEggResolver;
     private FileConfiguration configuration;
     private File currentFile;
 
-    YamlEasterUserRepository(File folder, EasterEggResolver easterEggResolver, boolean save) {
-        this.save = save;
-        if(!save) return;
+    YamlEasterUserRepository(File folder, EasterEggResolver easterEggResolver, MainConfiguration mainConfiguration) {
+        this.mainConfiguration = mainConfiguration;
+        if(!mainConfiguration.getBoolean("save")) return;
         this.easterEggResolver = easterEggResolver;
         this.currentFile = new File(folder, "storage.yml");
     }
@@ -34,7 +35,7 @@ public class YamlEasterUserRepository implements EasterUserRepository {
 
     @Override
     public EasterUserStorage load() throws IOException {
-        if(!save) return new EasterUserStorage();
+        if(!mainConfiguration.getBoolean("save")) return new EasterUserStorage();
         this.initConfiguration();
         if(!configuration.isConfigurationSection("easter-users")) return new EasterUserStorage();
         Set<EasterUser> easterUsers = new HashSet<>();
@@ -50,7 +51,7 @@ public class YamlEasterUserRepository implements EasterUserRepository {
 
     @Override
     public void save(EasterUserStorage easterUserStorage) throws IOException {
-        if(!save) return;
+        if(!mainConfiguration.getBoolean("save")) return;
         this.initConfiguration();
         configuration.set("easter-users", null);
         easterUserStorage.getEasterUsers().stream().forEach(easterUser -> {

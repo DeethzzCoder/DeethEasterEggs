@@ -22,11 +22,11 @@ public final class GeneralEasterEggsCommand {
         if(!(plugin instanceof DeethEasterEggsPlugin)) throw new CommandException("This JavaPlugin type don't support!");
         plugin.getCommand("eastereggs").setExecutor(new EasterEggsCommand(generalConfiguration.getLanguageConfiguration(), this));
         subCommands.add(new ReloadSubCommand(generalConfiguration.getLanguageConfiguration(), plugin));
-        subCommands.add(new CreateSubCommand(generalConfiguration.getLanguageConfiguration(), generalEasterEgg.getEasterEggResolver(), generalEasterEgg.getEasterEggFactory()));
+        subCommands.add(new CreateSubCommand(generalConfiguration, generalEasterEgg.getEasterEggResolver(), generalEasterEgg.getEasterEggFactory()));
         subCommands.add(new RemoveSubCommand(generalConfiguration.getLanguageConfiguration(), generalEasterEgg.getEasterEggResolver(), generalEasterEgg.getEasterEggPurifier(), generalEasterUser.getEasterUserResolver()));
-        subCommands.add(new RenameSubCommand(generalConfiguration.getLanguageConfiguration(), generalEasterEgg.getEasterEggResolver()));
+        subCommands.add(new RenameSubCommand(generalConfiguration, generalEasterEgg.getEasterEggResolver()));
         subCommands.add(new RelocationSubCommand(generalConfiguration.getLanguageConfiguration(), generalEasterEgg.getEasterEggResolver()));
-        subCommands.add(new ReprizeSubCommand(generalConfiguration.getLanguageConfiguration(), generalEasterEgg.getEasterEggResolver()));
+        subCommands.add(new ReprizeSubCommand(generalConfiguration, generalEasterEgg.getEasterEggResolver()));
         subCommands.add(new InfoSubCommand(generalConfiguration.getLanguageConfiguration(), generalEasterEgg.getEasterEggResolver()));
         subCommands.add(new PlayerInfoSubCommand(generalConfiguration.getLanguageConfiguration(), generalEasterUser.getEasterUserResolver()));
     }

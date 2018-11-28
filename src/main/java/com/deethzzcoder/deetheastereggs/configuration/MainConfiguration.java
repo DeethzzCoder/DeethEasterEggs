@@ -4,6 +4,7 @@ import com.deethzzcoder.deetheastereggs.configuration.exception.ConfigurationExc
 import org.bukkit.plugin.Plugin;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -43,12 +44,12 @@ public class MainConfiguration extends AbstractConfiguration {
         if(configuration.isConfigurationSection(pathSetting)) {
             loadSection(pathSetting);
         } else {
-            settings.put(pathSetting, configuration.get(pathSetting));
+            settings.put(pathSetting.replaceFirst("settings.", ""), configuration.get(pathSetting));
         }
     }
 
     public Object get(String path) {
-        return settings.get("settings." + path);
+        return settings.get(path);
     }
 
     public String getString(String path) {
@@ -57,6 +58,10 @@ public class MainConfiguration extends AbstractConfiguration {
 
     public boolean getBoolean(String path) {
         return (boolean) get(path);
+    }
+
+    public List<String> getStringList(String path) {
+        return (List<String>) get(path);
     }
 
     public TypeStorage getTypeStorage() throws ConfigurationException {

@@ -1,5 +1,6 @@
 package com.deethzzcoder.deetheastereggs.easteregg;
 
+import com.deethzzcoder.deetheastereggs.configuration.MainConfiguration;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -16,13 +17,13 @@ import java.util.Set;
 
 public class YamlEasterEggRepository implements EasterEggRepository {
 
+    private final MainConfiguration mainConfiguration;
     private FileConfiguration configuration;
-    private final boolean save;
     private File currentFile;
 
-    YamlEasterEggRepository(File folder, boolean save) {
-        this.save = save;
-        if(!save) return;
+    YamlEasterEggRepository(File folder, MainConfiguration mainConfiguration) {
+        this.mainConfiguration = mainConfiguration;
+        if(!mainConfiguration.getBoolean("save")) return;
         this.currentFile = new File(folder, "storage.yml");
     }
 
@@ -33,7 +34,7 @@ public class YamlEasterEggRepository implements EasterEggRepository {
 
     @Override
     public EasterEggStorage load() throws IOException {
-        if(!save) return new EasterEggStorage();
+        if(!mainConfiguration.getBoolean("save")) return new EasterEggStorage();
         this.initConfiguration();
         if(!configuration.isConfigurationSection("easter-eggs")) return new EasterEggStorage();
         Set<EasterEgg> easterEggs = new HashSet<>();
@@ -49,7 +50,7 @@ public class YamlEasterEggRepository implements EasterEggRepository {
 
     @Override
     public void save(EasterEggStorage easterEggStorage) throws IOException {
-        if(!save) return;
+        if(!mainConfiguration.getBoolean("save")) return;
         this.initConfiguration();
         configuration.set("easter-eggs", null);
         easterEggStorage.getEasterEggs().stream().forEach(easterEgg -> {

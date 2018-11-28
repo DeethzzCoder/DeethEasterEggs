@@ -19,3 +19,14 @@ settings:
 
   # If this option enabled, prize command will handling on server side.
   handling-server-side: true
+
+  # Blocked names for easter eggs.
+  blocked-egg-names:
+  - 'plugin'
+  - 'admin'
+  - 'user'
+
+  # Blocked prizes for easter eggs.
+  blocked-egg-prizes:
+  - 'eco give 10'
+  - 'test'
